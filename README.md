@@ -1,2 +1,2 @@
 # KodiNFOMusicVideos
-Create and Edit Kdoi NFO files for Music Videos collection
+Create and Edit Kodi NFO files for Music Videos collection
