@@ -1,0 +1,56 @@
+{
+  "apiurl": "https://musicbrainz.org/ws/2/release/1eb4416b-1f67-39a9-9b00-c59b3a24c983?inc=labels&fmt=json",
+  "status": "Official",
+  "cover-art-archive": {
+    "count": 6,
+    "back": true,
+    "darkened": false,
+    "front": true,
+    "artwork": true
+  },
+  "disambiguation": "",
+  "asin": "B000002VEB",
+  "country": "US",
+  "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+  "id": "1eb4416b-1f67-39a9-9b00-c59b3a24c983",
+  "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+  "packaging": "Jewel Case",
+  "date": "1987-06-29",
+  "release-events": [
+    {
+      "date": "1987-06-29",
+      "area": {
+        "name": "United States",
+        "id": "489ce91b-6658-3307-9877-795b68554c98",
+        "iso-3166-1-codes": [
+          "US"
+        ],
+        "sort-name": "United States",
+        "type": null,
+        "disambiguation": "",
+        "type-id": null
+      }
+    }
+  ],
+  "barcode": "078221840521",
+  "label-info": [
+    {
+      "catalog-number": "ARCD 8405",
+      "label": {
+        "type": "Original Production",
+        "disambiguation": "",
+        "type-id": "7aaa37fe-2def-3476-b359-80245850062d",
+        "label-code": 3484,
+        "name": "Arista",
+        "id": "c62e3985-6370-446a-bfb8-f1f6122e9c33",
+        "sort-name": "Arista"
+      }
+    }
+  ],
+  "text-representation": {
+    "language": "eng",
+    "script": "Latn"
+  },
+  "title": "Whitney",
+  "quality": "normal"
+}

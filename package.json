@@ -1,0 +1,32 @@
+{
+  "name": "kodinfomusicvideos",
+  "version": "1.0.0",
+  "description": "Create and Edit Kodi NFO files for Music Video collection.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clubside/KodiNFOMusicVideos.git"
+  },
+  "keywords": [
+    "kodi",
+    "nfo",
+    "metadata",
+    "musicvideos"
+  ],
+  "author": "Chris Rowley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clubside/KodiNFOMusicVideos/issues"
+  },
+  "homepage": "https://github.com/clubside/KodiNFOMusicVideos#readme",
+  "dependencies": {
+    "@fastify/static": "^6.10.0",
+    "fastify": "^4.15.0",
+    "nodemon": "^2.0.22",
+    "txml": "^5.1.1"
+  }
+}

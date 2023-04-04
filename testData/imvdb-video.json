@@ -1,0 +1,43 @@
+{
+  "apiurl": "https://imvdb.com/api/v1/video/276848605310",
+  "id": 276848605310,
+  "production_status": "r",
+  "song_title": "I Wanna Dance With Somebody",
+  "song_slug": "i-wanna-dance-with-somebody",
+  "url": "https:\/\/imvdb.com\/video\/whitney-houston\/i-wanna-dance-with-somebody",
+  "multiple_versions": false,
+  "version_name": null,
+  "version_number": 1,
+  "is_imvdb_pick": false,
+  "aspect_ratio": null,
+  "year": 1987,
+  "verified_credits": false,
+  "artists": [
+    {
+      "name": "Whitney Houston",
+      "slug": "whitney-houston",
+      "url": "https:\/\/imvdb.com\/n\/whitney-houston"
+    }
+  ],
+  "image": {
+    "o": "https:\/\/s3.amazonaws.com\/images.imvdb.com\/video\/276848605310-whitney-houston-i-wanna-dance-with-somebody_music_video_ov.jpg",
+    "l": "https:\/\/s3.amazonaws.com\/images.imvdb.com\/video\/276848605310-whitney-houston-i-wanna-dance-with-somebody_music_video_lv.jpg",
+    "b": "https:\/\/s3.amazonaws.com\/images.imvdb.com\/video\/276848605310-whitney-houston-i-wanna-dance-with-somebody_music_video_bv.jpg",
+    "t": "https:\/\/s3.amazonaws.com\/images.imvdb.com\/video\/276848605310-whitney-houston-i-wanna-dance-with-somebody_music_video_tv.jpg",
+    "s": "https:\/\/s3.amazonaws.com\/images.imvdb.com\/video\/276848605310-whitney-houston-i-wanna-dance-with-somebody_music_video_sv.jpg"
+  },
+  "directors": [
+    {
+      "position_name": "Director",
+      "position_code": "dir",
+      "entity_name": "Brian Grant",
+      "entity_slug": "brian-grant",
+      "entity_id": 121405,
+      "position_notes": "",
+      "position_id": 121405,
+      "entity_url": "https:\/\/imvdb.com\/n\/brian-grant"
+    }
+  ],
+  "release_date_stamp": null,
+  "release_date_string": null
+}

@@ -1,0 +1,442 @@
+{
+  "apiurl": "https://musicbrainz.org/ws/2/release-group/4f5bfc50-7a41-385e-9961-3db0feaec430?inc=releases&fmt=json",
+  "disambiguation": "",
+  "primary-type-id": "f529b476-6e62-324f-b0aa-1f3e33d313fc",
+  "releases": [
+    {
+      "title": "Whitney",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "release-events": [
+        {
+          "area": {
+            "type-id": null,
+            "type": null,
+            "iso-3166-1-codes": [
+              "JP"
+            ],
+            "id": "2db42837-c832-3c27-b4a3-08198f75693c",
+            "disambiguation": "",
+            "sort-name": "Japan",
+            "name": "Japan"
+          },
+          "date": "1987-06-01"
+        }
+      ],
+      "id": "aed8fcfd-0ef0-4013-8993-6fd4e2c22457",
+      "barcode": "4988011306112",
+      "status": "Official",
+      "disambiguation": "",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging": "Jewel Case",
+      "country": "JP",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "1987-06-01",
+      "quality": "normal"
+    },
+    {
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "1987-06-29",
+      "country": "DE",
+      "quality": "normal",
+      "status": "Official",
+      "disambiguation": "",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging": "Jewel Case",
+      "barcode": "4007192581412",
+      "title": "Whitney",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "id": "609d683f-eb4d-32ec-89e4-ad7ec2c065b8",
+      "release-events": [
+        {
+          "date": "1987-06-29",
+          "area": {
+            "id": "85752fda-13c4-31a3-bee5-0e5cb1f51dad",
+            "type": null,
+            "iso-3166-1-codes": [
+              "DE"
+            ],
+            "disambiguation": "",
+            "name": "Germany",
+            "sort-name": "Germany",
+            "type-id": null
+          }
+        }
+      ]
+    },
+    {
+      "barcode": "078221840521",
+      "id": "1eb4416b-1f67-39a9-9b00-c59b3a24c983",
+      "release-events": [
+        {
+          "date": "1987-06-29",
+          "area": {
+            "type-id": null,
+            "type": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "disambiguation": "",
+            "name": "United States",
+            "sort-name": "United States"
+          }
+        }
+      ],
+      "title": "Whitney",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "quality": "normal",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "country": "US",
+      "date": "1987-06-29",
+      "packaging": "Jewel Case",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "disambiguation": "",
+      "status": "Official"
+    },
+    {
+      "barcode": "",
+      "release-events": [
+        {
+          "date": "1987",
+          "area": {
+            "type-id": null,
+            "type": null,
+            "iso-3166-1-codes": [
+              "BR"
+            ],
+            "id": "f45b47f8-5796-386e-b172-6c31b009a5d8",
+            "sort-name": "Brazil",
+            "name": "Brazil",
+            "disambiguation": ""
+          }
+        }
+      ],
+      "id": "6bbc7d5e-3df0-47c6-93b7-d1d498385b21",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "title": "Whitney",
+      "quality": "normal",
+      "date": "1987",
+      "text-representation": {
+        "script": null,
+        "language": null
+      },
+      "country": "BR",
+      "status-id": null,
+      "packaging": "Jewel Case",
+      "status": null,
+      "disambiguation": ""
+    },
+    {
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "country": "CA",
+      "date": "1987",
+      "quality": "normal",
+      "status": "Official",
+      "disambiguation": "",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging": "Jewel Case",
+      "barcode": "078221840521",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "title": "Whitney",
+      "release-events": [
+        {
+          "area": {
+            "type": null,
+            "iso-3166-1-codes": [
+              "CA"
+            ],
+            "id": "71bbafaa-e825-3e15-8ca9-017dcad1748b",
+            "disambiguation": "",
+            "sort-name": "Canada",
+            "name": "Canada",
+            "type-id": null
+          },
+          "date": "1987"
+        }
+      ],
+      "id": "e3244f90-5c58-47fb-9955-10faad5288e9"
+    },
+    {
+      "barcode": "4007192081417",
+      "packaging-id": "f7101ce3-0384-39ce-9fde-fbbd0044d35f",
+      "title": "Whitney",
+      "id": "86ffe6ab-a466-440e-bc4a-2f29cd876e88",
+      "release-events": [
+        {
+          "date": "1987",
+          "area": {
+            "type-id": null,
+            "type": null,
+            "iso-3166-1-codes": [
+              "XE"
+            ],
+            "id": "89a675c2-3e37-3518-b83c-418bad59a85a",
+            "disambiguation": "",
+            "sort-name": "Europe",
+            "name": "Europe"
+          }
+        }
+      ],
+      "country": "XE",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "1987",
+      "quality": "normal",
+      "disambiguation": "",
+      "status": "Official",
+      "packaging": "Cardboard/Paper Sleeve",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe"
+    },
+    {
+      "barcode": "",
+      "packaging-id": "f7101ce3-0384-39ce-9fde-fbbd0044d35f",
+      "title": "Whitney",
+      "release-events": [
+        {
+          "area": {
+            "disambiguation": "",
+            "sort-name": "Spain",
+            "name": "Spain",
+            "id": "471c46a7-afc5-31c4-923c-d0444f5053a4",
+            "type": null,
+            "iso-3166-1-codes": [
+              "ES"
+            ],
+            "type-id": null
+          },
+          "date": "1987"
+        }
+      ],
+      "id": "d66db7c4-0017-41cd-8aea-ed52ba4c5d61",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "date": "1987",
+      "country": "ES",
+      "quality": "normal",
+      "disambiguation": "",
+      "status": "Official",
+      "packaging": "Cardboard/Paper Sleeve",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe"
+    },
+    {
+      "quality": "normal",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "country": "GB",
+      "date": "1987",
+      "packaging": null,
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "disambiguation": "",
+      "status": "Official",
+      "barcode": null,
+      "release-events": [
+        {
+          "date": "1987",
+          "area": {
+            "name": "United Kingdom",
+            "sort-name": "United Kingdom",
+            "disambiguation": "",
+            "type": null,
+            "id": "8a754a16-0027-3a29-b6d7-2b40ea0481ed",
+            "iso-3166-1-codes": [
+              "GB"
+            ],
+            "type-id": null
+          }
+        }
+      ],
+      "id": "9ce4a628-0608-42e5-8c4b-f0794c706e22",
+      "title": "Whitney",
+      "packaging-id": null
+    },
+    {
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging": "Jewel Case",
+      "status": "Official",
+      "disambiguation": "BMG music club release",
+      "quality": "normal",
+      "country": "US",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "date": "1987",
+      "release-events": [
+        {
+          "area": {
+            "name": "United States",
+            "sort-name": "United States",
+            "disambiguation": "",
+            "type": null,
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type-id": null
+          },
+          "date": "1987"
+        }
+      ],
+      "id": "18666716-c21a-4f0d-a1f6-15897fc858bd",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "title": "Whitney",
+      "barcode": "0208313561254"
+    },
+    {
+      "status": "Official",
+      "disambiguation": "",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging": "Cardboard/Paper Sleeve",
+      "date": "1987",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "country": "US",
+      "quality": "normal",
+      "packaging-id": "f7101ce3-0384-39ce-9fde-fbbd0044d35f",
+      "title": "Whitney",
+      "release-events": [
+        {
+          "area": {
+            "type-id": null,
+            "sort-name": "United States",
+            "name": "United States",
+            "disambiguation": "",
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "type": null,
+            "iso-3166-1-codes": [
+              "US"
+            ]
+          },
+          "date": "1987"
+        }
+      ],
+      "id": "22d8e0c9-a90a-4371-92d7-b84a6147a60c",
+      "barcode": "078221840514"
+    },
+    {
+      "packaging": "Jewel Case",
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "disambiguation": "Matrix / Runout: ARCD-8405 4A2 75, Manufactured in Japan",
+      "status": "Official",
+      "quality": "normal",
+      "text-representation": {
+        "script": "Latn",
+        "language": "eng"
+      },
+      "date": "1987",
+      "country": "US",
+      "release-events": [
+        {
+          "area": {
+            "iso-3166-1-codes": [
+              "US"
+            ],
+            "type": null,
+            "id": "489ce91b-6658-3307-9877-795b68554c98",
+            "disambiguation": "",
+            "sort-name": "United States",
+            "name": "United States",
+            "type-id": null
+          },
+          "date": "1987"
+        }
+      ],
+      "id": "0171a325-aa29-4674-8987-398d43799d3c",
+      "title": "Whitney",
+      "packaging-id": "ec27701a-4a22-37f4-bfac-6616e0f9750a",
+      "barcode": "7822184052"
+    },
+    {
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging": null,
+      "status": "Official",
+      "disambiguation": "",
+      "quality": "normal",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "2008-03-26",
+      "country": "JP",
+      "release-events": [
+        {
+          "date": "2008-03-26",
+          "area": {
+            "type-id": null,
+            "type": null,
+            "id": "2db42837-c832-3c27-b4a3-08198f75693c",
+            "iso-3166-1-codes": [
+              "JP"
+            ],
+            "disambiguation": "",
+            "name": "Japan",
+            "sort-name": "Japan"
+          }
+        }
+      ],
+      "id": "fa393ae7-c6a6-35bb-9868-70b4203de569",
+      "packaging-id": null,
+      "title": "Whitney",
+      "barcode": "4988017657447"
+    },
+    {
+      "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+      "packaging": "None",
+      "status": "Official",
+      "disambiguation": "mastered for iTunes",
+      "quality": "normal",
+      "country": "XW",
+      "text-representation": {
+        "language": "eng",
+        "script": "Latn"
+      },
+      "date": "2014-03-14",
+      "id": "eae0da1d-7287-41e2-b993-6f918f850e71",
+      "release-events": [
+        {
+          "area": {
+            "name": "[Worldwide]",
+            "sort-name": "[Worldwide]",
+            "disambiguation": "",
+            "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
+            "type": null,
+            "iso-3166-1-codes": [
+              "XW"
+            ],
+            "type-id": null
+          },
+          "date": "2014-03-14"
+        }
+      ],
+      "title": "Whitney",
+      "packaging-id": "119eba76-b343-3e02-a292-f0f00644bb9b",
+      "barcode": "886444538367"
+    }
+  ],
+  "primary-type": "Album",
+  "secondary-type-ids": [],
+  "title": "Whitney",
+  "secondary-types": [],
+  "id": "4f5bfc50-7a41-385e-9961-3db0feaec430",
+  "first-release-date": "1987-06-01"
+}
