@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; img-src * data:; script-src 'self'">
+	<meta http-equiv="X-Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; img-src * data:; script-src 'self'">
+	<title>Kodi NFO Music Videos</title>
+	<link href="./css/the-new-css-reset.css" rel="stylesheet">
+	<link href="./css/style.css" rel="stylesheet">
+	<script src="./modules/media-upload.js"></script>
+	<script src="./modules/star-rating.js"></script>
+	<script src="./modules/toggle-switch.js"></script>
+</head>
+
+<body>
+	<svg class="hidden">
+		<symbol id="caret-right" viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 6L15 12L9 18" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="caret-left" viewBox="0 0 24 24"  stroke-width="1.5" fill="inherit" color="inherit"><path d="M15 6L9 12L15 18" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="caret-down" viewBox="0 0 24 24" stroke-width="1.5"><path d="M6 9L12 15L18 9" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="caret-up" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M6 15L12 9L18 15" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-folder" viewBox="0 0 24 24" stroke-width="1.5"><path d="M2 11V4.6C2 4.26863 2.26863 4 2.6 4H8.77805C8.92127 4 9.05977 4.05124 9.16852 4.14445L12.3315 6.85555C12.4402 6.94876 12.5787 7 12.722 7H21.4C21.7314 7 22 7.26863 22 7.6V11M2 11V19.4C2 19.7314 2.26863 20 2.6 20H21.4C21.7314 20 22 19.7314 22 19.4V11M2 11H22" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="check-none" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="check-some" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M7 12.5L10 15.5L17 8.5" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="check-all" viewBox="0 0 24 24" fill="inherit" color="inherit" stroke-width="1.5"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM7.53044 11.9697C7.23755 11.6768 6.76268 11.6768 6.46978 11.9697C6.17689 12.2626 6.17689 12.7374 6.46978 13.0303L9.46978 16.0303C9.76268 16.3232 10.2376 16.3232 10.5304 16.0303L17.5304 9.03033C17.8233 8.73744 17.8233 8.26256 17.5304 7.96967C17.2375 7.67678 16.7627 7.67678 16.4698 7.96967L10.0001 14.4393L7.53044 11.9697Z" fill="inherit"></path></symbol>
+		<symbol id="icon-ai" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M8 15C12.8747 15 15 12.949 15 8C15 12.949 17.1104 15 22 15C17.1104 15 15 17.1104 15 22C15 17.1104 12.8747 15 8 15Z" stroke="inherit" stroke-width="1.5" stroke-linejoin="round"></path><path d="M2 6.5C5.13376 6.5 6.5 5.18153 6.5 2C6.5 5.18153 7.85669 6.5 11 6.5C7.85669 6.5 6.5 7.85669 6.5 11C6.5 7.85669 5.13376 6.5 2 6.5Z" stroke="inherit" stroke-width="1.5" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-map" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M20 10C20 14.4183 12 22 12 22C12 22 4 14.4183 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10Z" stroke="inherit" stroke-width="1.5"></path><path d="M12 11C12.5523 11 13 10.5523 13 10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10C11 10.5523 11.4477 11 12 11Z" fill="inherit" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-details" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M4 21.4V2.6C4 2.26863 4.26863 2 4.6 2H16.2515C16.4106 2 16.5632 2.06321 16.6757 2.17574L19.8243 5.32426C19.9368 5.43679 20 5.5894 20 5.74853V21.4C20 21.7314 19.7314 22 19.4 22H4.6C4.26863 22 4 21.7314 4 21.4Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 10L16 10" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 18L16 18" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 14L12 14" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16 2V5.4C16 5.73137 16.2686 6 16.6 6H20" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-sidebar" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M19 21L5 21C3.89543 21 3 20.1046 3 19L3 5C3 3.89543 3.89543 3 5 3L19 3C20.1046 3 21 3.89543 21 5L21 19C21 20.1046 20.1046 21 19 21Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9.5 21V3" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-targets" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M16.2778 17.5412C15.0948 18.4558 13.611 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5C15.866 5 19 8.13401 19 12C19 16.2778 14 15.7222 14 13C14 11.4444 14 8.5 14 8.5" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 12V11.5C14 10.1193 12.8807 9 11.5 9C10.1193 9 9 10.1193 9 11.5V12" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 12V12.5C14 13.8807 12.8807 15 11.5 15C10.1193 15 9 13.8807 9 12.5V12" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-folders" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M2 11V4.6C2 4.26863 2.26863 4 2.6 4H8.77805C8.92127 4 9.05977 4.05124 9.16852 4.14445L12.3315 6.85555C12.4402 6.94876 12.5787 7 12.722 7H21.4C21.7314 7 22 7.26863 22 7.6V11M2 11V19.4C2 19.7314 2.26863 20 2.6 20H21.4C21.7314 20 22 19.7314 22 19.4V11M2 11H22" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-clear-shelf" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M2 10C2 10 13 10 16 10C24 10 24 21 16 21M2 10L9 3M2 10L9 17" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-close" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M9.17218 14.8284L12.0006 12M14.829 9.17157L12.0006 12M12.0006 12L9.17218 9.17157M12.0006 12L14.829 14.8284" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-settings" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19.6224 10.3954L18.5247 7.7448L20 6L18 4L16.2647 5.48295L13.5578 4.36974L12.9353 2H10.981L10.3491 4.40113L7.70441 5.51596L6 4L4 6L5.45337 7.78885L4.3725 10.4463L2 11V13L4.40111 13.6555L5.51575 16.2997L4 18L6 20L7.79116 18.5403L10.397 19.6123L11 22H13L13.6045 19.6132L16.2551 18.5155C16.6969 18.8313 18 20 18 20L20 18L18.5159 16.2494L19.6139 13.598L21.9999 12.9772L22 11L19.6224 10.3954Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-back" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M16 12H8M8 12L11.5 15.5M8 12L11.5 8.5" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-star" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-save" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M3 19V5C3 3.89543 3.89543 3 5 3H16.1716C16.702 3 17.2107 3.21071 17.5858 3.58579L20.4142 6.41421C20.7893 6.78929 21 7.29799 21 7.82843V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19Z" stroke="inherit" stroke-width="1.5"></path><path d="M8.6 9H15.4C15.7314 9 16 8.73137 16 8.4V3.6C16 3.26863 15.7314 3 15.4 3H8.6C8.26863 3 8 3.26863 8 3.6V8.4C8 8.73137 8.26863 9 8.6 9Z" stroke="inherit" stroke-width="1.5"></path><path d="M6 13.6V21H18V13.6C18 13.2686 17.7314 13 17.4 13H6.6C6.26863 13 6 13.2686 6 13.6Z" stroke="inherit" stroke-width="1.5"></path></symbol>
+		<symbol id="icon-task" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M9 6L20 6" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.80002 5.79999L4.60002 6.59998L6.60001 4.59999" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.80002 11.8L4.60002 12.6L6.60001 10.6" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.80002 17.8L4.60002 18.6L6.60001 16.6" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 12L20 12" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 18L20 18" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-link" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M21 3L15 3M21 3L12 12M21 3V9" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H11" stroke="inherit" stroke-width="1.5" stroke-linecap="round"></path></symbol>
+		<symbol id="icon-dark" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-light" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+	</svg>
+	<section>
+		<main>
+			<article id="panel-about" class="hidden">
+				<div class="panel-inner">
+					<div class="app-header"><img src="img/appheader.png"></div>
+					<div class="about-item">
+						<img src="img/Kodi.svg">
+						<p>Kodi</p>
+						<a href="https://kodi.tv/">Open Source Home Theater Software</a>
+					</div>
+					<h2>Development</h2>
+					<div class="about-item">
+						<img src="img/github.svg">
+						<p>KodiNFOMusicVideos v1.0</p>
+						<a href="https://github.com/clubside/KodiNFOMusicVideos">Create and Edit Kdoi NFO files for Music Videos collection</a>
+					</div>
+					<div class="about-item">
+						<img src="img/node.js.svg">
+						<p>Node.js v<span id="node-version">20.9.0</span></p>
+						<a href="https://nodejs.org/en">Node.js — Run JavaScript Everywhere</a>
+					</div>
+					<div class="about-item">
+						<img src="img/chromium.svg">
+						<p>Chromium v<span id="chrome-version">122.0.6261.156</span></p>
+						<a href="https://www.chromium.org/">The Chromium Projects</a>
+					</div>
+					<div class="about-item">
+						<img src="img/electron.svg">
+						<p>Electron v<span id="electron-version">29.2.0</span></p>
+						<a href="https://electronjs.org/">Electron: Build cross-platform desktop apps with JavaScript, HTML, and CSS</a>
+					</div>
+					<div class="about-item">
+						<div style="position: relative; display: inline-flex; align-items: center; background-color: white; padding: 4px; transition: all 0.1s ease 0s;">
+							<div style="color: black; background-color: white; margin-right: 4px;"><img src="img/iconoir-peace.svg" style="width: 4em; height: 4em;"></div>
+							<img src="img/iconoir-logo.svg" alt="Iconoir Logo" style="margin-top: -4px; color: black; height: 4em; width: auto;">
+						</div>
+						<p>iconoir</p>
+						<a href="https://iconoir.com/">Free Icons</a>
+					</div>
+					<h2>Information Providers</h2>
+					<div class="about-item">
+						<img src="img/Fanart.tv.png">
+						<p>Fanart.tv</p>
+						<a href="https://fanart.tv/">Logos, Backgrounds, Posters and more for your TV, Movie and Music collections</a>
+					</div>
+					<div class="about-item">
+						<img src="img/IMDb.svg">
+						<p>IMDb</p>
+						<a href="https://imdb.com/">Ratings, Reviews, and Where to Watch the Best Movies &amp; TV Shows</a>
+					</div>
+					<div class="about-item">
+						<img src="img/IMVDb.png">
+						<p>IMVDb</p>
+						<a href="https://imdb.com/">The Internet Music Video Database</a>
+					</div>
+					<div class="about-item">
+						<img src="img/MusicBrainz.svg">
+						<p>MusicBrainz</p>
+						<a href="https://imvdb.com/">the open music encyclopedia</a>
+					</div>
+					<div class="about-item">
+						<img src="img/TheAudioDB.png">
+						<p>TheAudioDB</p>
+						<a href="https://theaudiodb.com/">Free Music Database and free Music API with High Quality Artwork and Metadata</a>
+					</div>
+					<div class="about-item">
+						<img src="img/Wikipedia.svg">
+						<p>Wikipedia</p>
+						<a href="https://en.wikipedia.org/">The Free Encyclopedia</a>
+					</div>
+				</div>
+			</article>
+			<article id="panel-settings" class="hidden">
+				<div class="panel-inner">
+					<div class="app-header"><img src="img/appheader.png"></div>
+					<p>Provide the folder that contains your Music Videos. Since Kodi only supports a single folder for Music Videos and sub-folders will be
+						ignored.</p>
+					<label>
+						<span>Music Videos Folder</span>
+						<input id="home-folder" type="text">
+					</label>
+					<div class="button-row">
+						<button id="browse-folder" type="button" class="button-form">Browse</button>
+						<button id="set-folder" type="button" class="button-form" disabled="">Set</button>
+					</div>
+				</div>
+			</article>
+			<article id="panel-videos" class="hidden">
+				<div class="panel-videos-container">
+					<div class="panel-videos-items"></div>
+				</div>
+				<div class="panel-view">
+					<div class="panel-tab"><span id="tab-view">View</span></div>
+					<div class="panel-view-content" style="max-height: 8px;">
+						<div class="panel-view-filter-bar">
+							<label>
+								<span>Filter by Filename</span>
+								<input id="filter-bar-filename" class="view-filter" type="text">
+							</label>
+							<label>
+								<span>Filter by Artists</span>
+								<input id="filter-bar-artists" class="view-filter" type="text">
+							</label>
+							<label>
+								<span>Filter by Title</span>
+								<input id="filter-bar-title" class="view-filter" type="text">
+							</label>
+						</div>
+						<div class="panel-view-filter-fields">
+							<label>
+								<span>NFO file</span>
+								<select id="filter-nfo" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Artists</span>
+								<select id="filter-artists" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Title</span>
+								<select id="filter-title" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Album</span>
+								<select id="filter-album" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Premiered</span>
+								<select id="filter-premiered" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Directors</span>
+								<select id="filter-directors" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Studios</span>
+								<select id="filter-studios" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Genres</span>
+								<select id="filter-genres" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Tags</span>
+								<select id="filter-tags" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Actors</span>
+								<select id="filter-actors" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Runtime</span>
+								<select id="filter-runtime" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>User Rating</span>
+								<select id="filter-userrating" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Plot</span>
+								<select id="filter-plot" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Thumbnail</span>
+								<select id="filter-thumb" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Disc Art</span>
+								<select id="filter-discart" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Clear Logo</span>
+								<select id="filter-clearlogo" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Clear Art</span>
+								<select id="filter-clearart" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Poster</span>
+								<select id="filter-poster" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Banner</span>
+								<select id="filter-banner" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Landscape</span>
+								<select id="filter-landscape" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Key Art</span>
+								<select id="filter-keyart" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+							<label>
+								<span>Fan Art</span>
+								<select id="filter-fanart" class="view-filter">
+									<option value="0">Show All</option><option value="1">Show Available</option><option value="2">Show Missing</option>
+								</select>
+							</label>
+						</div>
+					</div>
+				</div>
+			</article>
+			<article id="panel-video" class="hidden">
+				<div class="panel-video-editor-container">
+					<div class="panel-video-editor">
+						<div class="panel-video-top">
+							<video controls></video>
+							<label>
+								<span>Filename</span>
+								<div>
+									<input id="musicvideo-filename" type="text" required>
+									<button id="action-auto" type="button" class="button-image" title="Fill artist, title and runtime"><svg><use href="#icon-task"></use></svg></button>
+								</div>
+							</label>
+						</div>
+						<form class="panel-video-fields">
+							<label>
+								<span>Artists</span>
+								<input id="musicvideo-artists" type="text" placeholder="Separate by ;" required>
+							</label>
+							<label>
+								<span>Title</span>
+								<input id="musicvideo-title" type="text" required>
+							</label>
+							<label>
+								<span>Album</span>
+								<input id="musicvideo-album" type="text">
+							</label>
+							<label>
+								<span>Premiered</span>
+								<input id="musicvideo-premiered" type="text" placeholder="Format as yyyy-mm-dd">
+							</label>
+							<label>
+								<span>Directors</span>
+								<input id="musicvideo-directors" type="text" placeholder="Separate by ;">
+							</label>
+							<label>
+								<span>Studios</span>
+								<input id="musicvideo-studios" type="text" placeholder="Separate by ;">
+							</label>
+							<label>
+								<span>Genres</span>
+								<input id="musicvideo-genres" type="text" placeholder="Separate by ;">
+							</label>
+							<label>
+								<span>Tags</span>
+								<input id="musicvideo-tags" type="text" placeholder="Separate by ;">
+							</label>
+							<label>
+								<span>Actors</span>
+								<input id="musicvideo-actors" type="text" placeholder="Format as Name, Role. Separate by ;">
+							</label>
+							<label>
+								<span>Runtime</span>
+								<input id="musicvideo-runtime" type="text">
+							</label>
+							<label>
+								<span>User Rating</span>
+								<star-rating id="musicvideo-userrating" stars="5"></star-rating>
+							</label>
+						</form>
+						<div class="panel-video-plot">
+							<label>
+								<span>Plot</span>
+								<textarea id="musicvideo-plot"></textarea>
+							</label>
+						</div>
+						<div id="panel-video-images">
+							<label>
+								<span>Thumbnail</span>
+								<media-upload id="musicvideo-thumb" class="media-upload media-upload-1x1" types="image/jpeg image/png image/webp"></media-upload>
+							</label>
+							<label>
+								<span>Disc Art</span>
+								<media-upload id="musicvideo-discart" class="media-upload media-upload-1x1" types="image/jpeg image/png image/webp"></media-upload>
+							</label>
+							<label>
+								<span>Clear Logo</span>
+								<media-upload id="musicvideo-clearlogo" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
+							</label>
+							<label>
+								<span>Clear Art</span>
+								<media-upload id="musicvideo-clearart" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
+							</label>
+							<label>
+								<span>Poster</span>
+								<media-upload id="musicvideo-poster" class="media-upload media-upload-2x3" types="image/jpeg image/png image/webp"></media-upload>
+							</label>
+							<label>
+								<span>Banner</span>
+								<media-upload id="musicvideo-banner" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
+							</label>
+							<label>
+								<span>Landscape</span>
+								<media-upload id="musicvideo-landscape" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
+							</label>
+							<label>
+								<span>Key Art</span>
+								<media-upload id="musicvideo-keyart" class="media-upload media-upload-2x3" types="image/jpeg image/png image/webp"></media-upload>
+							</label>
+							<label>
+								<span>Fan Art</span>
+								<media-upload id="musicvideo-fanart" class="media-upload media-upload-16x9" types="image/jpeg image/png image/webp" addable></media-upload>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="panel-lookup">
+					<div class="panel-tab"><span id="tab-lookup">Lookup</span></div>
+					<div class="panel-lookup-content" style="max-height: 8px;">
+						<div class="panel-lookup-content-inner">
+							<form>
+								<label>
+									<span>Lookup Artists</span>
+									<input id="lookup-artists" type="text" placeholder="Alternate Artist(s) to use">
+								</label>
+								<label>
+									<span>Lookup Title</span>
+									<input id="lookup-title" type="text" placeholder="Alternate Title to use">
+								</label>
+								<div>
+									<button id="action-lookup" type="button" class="button-form" disabled>Lookup</button>
+								</div>
+							</form>
+							<div class="panel-lookup-content-results"></div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</main>
+		<footer>
+			<article>
+				<button id="nav-back" type="button" class="button-image" disabled title="Back"><svg><use href="#icon-back"></use></svg></button>
+			</article>
+			<article id="video-navigation" class="hidden">
+				<button id="nav-prev" type="button" class="button-image" title="Previous Music Video"><svg><use href="#caret-left"></use></svg></button>
+				<button id="action-save" type="button" class="button-image" title="Save Music Video"><svg><use href="#icon-save"></use></svg></button>
+				<button id="nav-next" type="button" class="button-image" title="Next Music Video"><svg><use href="#caret-right"></use></svg></button>
+			</article>
+			<article>
+				<button id="nav-color-mode" type="button" class="button-image" title="Toggle Dark/Light Mode"><svg><use href="#icon-dark"></use></svg></button>
+				<button id="nav-settings" type="button" class="button-image" title="Settings"><svg><use href="#icon-settings"></use></svg></button>
+				<button id="nav-about" type="button" class="button-image" title="About"><img src="img/favicon.png"></button>
+			</article>
+		</footer>
+	</section>
+
+	<!-- You can also require other files to run in this process -->
+	<script src="./renderer.js" type="module"></script>
+</body>
+
+</html>

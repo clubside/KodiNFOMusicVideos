@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS",
+		"target": "esnext"
+	},
+	"include": [
+		"*.js",
+		"*.html",
+		"modules/**/*.js"
+	]
+}

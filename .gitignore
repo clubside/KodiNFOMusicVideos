@@ -1,3 +1,7 @@
+util/
+*.html
+!index.html
+
 # Logs
 logs
 *.log
