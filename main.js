@@ -2,7 +2,7 @@
 const { app, BrowserWindow, dialog, ipcMain, shell } = require('electron')
 const fs = require('node:fs')
 const path = require('node:path')
-const { getMusicVideosData, saveMusicVideoData } = require('./modules/filesystem.js')
+const { checkForMusicVideos, getMusicVideosData, saveMusicVideoData } = require('./modules/filesystem.js')
 const { lookup } = require('./modules/lookup.js')
 const { popupContextMenu } = require('./modules/contextmenu.js')
 
@@ -20,11 +20,12 @@ const mainWindowOptions = {
 	}
 }
 const appOptions = {
-	homeFolder: undefined,
+	homeFolder: '',
 	windowX: undefined,
 	windowY: undefined,
 	windowWidth: undefined,
-	windowHeight: undefined
+	windowHeight: undefined,
+	colorMode: 'light'
 }
 const appConfig = path.join(app.getPath('userData'), 'config.json')
 
@@ -34,6 +35,7 @@ let mainWindow
 let moveTimeout
 let resizeTimeout
 let windowMaximized = false
+let firstRun = true
 
 async function getMusicVideos() {
 	const musicVideos = await getMusicVideosData(appOptions.homeFolder)
@@ -62,6 +64,11 @@ async function setVideoFolder(folder) {
 	}
 }
 
+function setColorMode(mode) {
+	appOptions.colorMode = mode
+	setOptions()
+}
+
 async function getOptions() {
 	if (fs.existsSync(appConfig)) {
 		const result = fs.readFileSync(appConfig)
@@ -71,12 +78,14 @@ async function getOptions() {
 		appOptions.windowY = options.windowY || undefined
 		appOptions.windowWidth = options.windowWidth || undefined
 		appOptions.windowHeight = options.windowHeight || undefined
+		appOptions.colorMode = options.colorMode || 'light'
 		console.log(appOptions)
+		firstRun = false
 	}
 }
 
 async function setOptions() {
-	fs.writeFileSync(appConfig, JSON.stringify(appOptions))
+	fs.writeFileSync(appConfig, JSON.stringify(appOptions, null, '\t'))
 }
 
 function getWindowOptions() {
@@ -99,7 +108,7 @@ function createWindow() {
 	mainWindow.loadFile('index.html')
 
 	// Open the DevTools.
-	mainWindow.webContents.openDevTools()
+	// mainWindow.webContents.openDevTools()
 
 	mainWindow.on('maximize', () => {
 		windowMaximized = true
@@ -143,6 +152,18 @@ function createWindow() {
 async function startup() {
 	console.log(appConfig)
 	await getOptions()
+	if (firstRun) {
+		let appPath = process.env.PORTABLE_EXECUTABLE_DIR
+		if (appPath) {
+			appPath = appPath.replace(/\\/msg, '/')
+			const useAppFolder = await checkForMusicVideos(appPath)
+			console.log({ appPath, useAppFolder })
+			if (useAppFolder) {
+				appOptions.homeFolder = appPath
+				setOptions()
+			}
+		}
+	}
 	if (appOptions.windowX) {
 		mainWindowOptions.x = appOptions.windowX
 		mainWindowOptions.y = appOptions.windowY
@@ -177,12 +198,19 @@ ipcMain.handle('action:openUrl', (event, url) => {
 	shell.openExternal(url)
 })
 ipcMain.handle('dialog:videoFolder', browseVideoFolder)
+ipcMain.handle('settings:getFolder', () => {
+	return appOptions.homeFolder
+})
 ipcMain.handle('settings:setFolder', async (event, folder) => {
 	console.log(`setting folder to ${folder}`)
 	return await setVideoFolder(folder)
 })
-ipcMain.handle('settings:getFolder', () => {
-	return appOptions.homeFolder
+ipcMain.handle('settings:getColorMode', () => {
+	return appOptions.colorMode
+})
+ipcMain.handle('settings:setColorMode', (event, mode) => {
+	console.log(`setting color mode to ${mode}`)
+	setColorMode(mode)
 })
 ipcMain.handle('data:getMusicVideos', getMusicVideos)
 ipcMain.handle('data:getLookup', async (event, artists, title) => {

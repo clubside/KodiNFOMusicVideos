@@ -322,7 +322,7 @@ footer article:last-child {
 }
 
 .panel-lookup-content-results {
-	overflow-y: auto;
+	overflow: hidden auto;
 }
 
 .panel-lookup-content-results h2 {
@@ -373,7 +373,7 @@ footer article:last-child {
 
 .panel-lookup-content-results div div img {
 	height: 200px;
-	display: inline-block;
+	display: inline-flex;
 	margin: 0 0 4px 4px;
 }
 

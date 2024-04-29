@@ -102,6 +102,10 @@ exports.popupContextMenu = (webContents, params) => {
 			enabled: params.editFlags.canSelectAll,
 			accelerator: 'CommandOrControl+A'
 		})
+	} else {
+		conextMenuTemplate.push({
+			role: 'toggleDevTools'
+		})
 	}
 	if (conextMenuTemplate.length > 0) {
 		const contextMenu = Menu.buildFromTemplate(conextMenuTemplate)

@@ -140,6 +140,14 @@ function checkFanart(fileName) {
 	return fanartItems
 }
 
+exports.checkForMusicVideos = async (path) => {
+	const checkFiles = fs.readdirSync(path, { withFileTypes: true })
+	const regex = new RegExp(`^(.*?)\\.(${videoFormats})$`, 'im')
+	const musicVideoFiles = checkFiles.filter(({ name }) => name.match(regex))
+	console.log({ totalFiles: checkFiles.length, videoFiles: musicVideoFiles.length })
+	return musicVideoFiles.length > 0
+}
+
 exports.getMusicVideosData = async (path) => {
 	const musicVideos = []
 	let regex

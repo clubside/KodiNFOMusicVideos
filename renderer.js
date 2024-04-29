@@ -154,18 +154,42 @@ function checkHomeFolder() {
 	}
 }
 
-function toggleColorMode() {
+function toggleColorMode(forced) {
 	const colorModeButton = document.getElementById('nav-color-mode')
 	const colorModeDark = document.getElementById('dark-mode')
-	if (colorModeDark) {
-		colorModeDark.remove()
-		colorModeButton.innerHTML = '<svg><use href="#icon-dark"></use></svg>'
-	} else {
-		const colorModeDarkStyles = document.createElement('style')
-		colorModeDarkStyles.id = 'dark-mode'
-		colorModeDarkStyles.innerHTML = darkMode
-		document.querySelector('head').appendChild(colorModeDarkStyles)
-		colorModeButton.innerHTML = '<svg><use href="#icon-light"></use></svg>'
+	switch (forced) {
+		case 'light':
+			if (colorModeDark) {
+				colorModeDark.remove()
+				colorModeButton.innerHTML = '<svg><use href="#icon-dark"></use></svg>'
+			}
+			break
+		case 'dark': {
+			if (!colorModeDark) {
+				const colorModeDarkStyles = document.createElement('style')
+				colorModeDarkStyles.id = 'dark-mode'
+				colorModeDarkStyles.innerHTML = darkMode
+				document.querySelector('head').appendChild(colorModeDarkStyles)
+				colorModeButton.innerHTML = '<svg><use href="#icon-light"></use></svg>'
+			}
+			break
+		}
+		default: {
+			let colorMode = ''
+			if (colorModeDark) {
+				colorModeDark.remove()
+				colorModeButton.innerHTML = '<svg><use href="#icon-dark"></use></svg>'
+				colorMode = 'light'
+			} else {
+				const colorModeDarkStyles = document.createElement('style')
+				colorModeDarkStyles.id = 'dark-mode'
+				colorModeDarkStyles.innerHTML = darkMode
+				document.querySelector('head').appendChild(colorModeDarkStyles)
+				colorModeButton.innerHTML = '<svg><use href="#icon-light"></use></svg>'
+				colorMode = 'dark'
+			}
+			window.electronAPI.setColorMode(colorMode)
+		}
 	}
 }
 
@@ -936,6 +960,8 @@ async function startup() {
 	captureLinks()
 	document.getElementById('musicvideo-fanart').addEventListener('add', addFanart)
 	homeFolder = await window.electronAPI.getFolder()
+	console.log(homeFolder)
+	toggleColorMode(await window.electronAPI.getColorMode())
 	if (homeFolder !== '') {
 		await getMusicVideos()
 		setCurrentPanel('videos', false)

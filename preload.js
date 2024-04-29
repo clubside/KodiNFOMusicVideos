@@ -16,6 +16,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
 	chooseFolder: () => ipcRenderer.invoke('dialog:videoFolder'),
 	getFolder: () => ipcRenderer.invoke('settings:getFolder'),
 	setFolder: (folder) => ipcRenderer.invoke('settings:setFolder', folder),
+	getColorMode: () => ipcRenderer.invoke('settings:getColorMode'),
+	setColorMode: (mode) => ipcRenderer.invoke('settings:setColorMode', mode),
 	getMusicVideos: () => ipcRenderer.invoke('data:getMusicVideos'),
 	saveMusicVideo: (musicVideo) => ipcRenderer.invoke('data:saveMusicVideo', musicVideo),
 	getLookup: (artists, title) => ipcRenderer.invoke('data:getLookup', artists, title),

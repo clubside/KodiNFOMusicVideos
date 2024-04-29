@@ -2,7 +2,7 @@
 
 Create and Edit Kodi NFO files for Music Videos collection.
 
-This is a complete rewrite of my previous two attempts and is now an [Electron](https://electronjs.org/) app. Currently you have to clone this repository and use `npm start` to launch the application. The first item in the Roadmap below is to use [electron-builder](https://www.electron.build/index.html) to generate executable for Windows and Linux, I don't own a Mac so I won't be able to generate for that platform but the app should run.
+This is a complete rewrite of my previous two attempts and is now an [Electron](https://electronjs.org/) app. Currently I can only build the excutable for Windows so if you would like to use in on macOs or Linux you'll need to clone the repository and either run or build it yourself. I will be looking into solutions for the other platforms.
 
 ## Main Features
 
@@ -29,7 +29,7 @@ This is a complete rewrite of my previous two attempts and is now an [Electron](
 
 ## How to use
 
-After launching the application you will be presented with a folder selection interface. Enter or browse for your music videos folder.
+The Windows app is portable. After launching the application for the first time it will check the current folder for video files. If you place it in the same folder as your music videos you'll be good to go otherwise you will be presented with a folder selection interface. Enter or browse for your music videos folder.
 
 Once your folder is set a list of your music videos will display. A 'View' tab at the bottom of the list will reveal the filter options. The action bar at the bottom of the app has a back button, light/dark toggle, settings and about page.
 
@@ -37,7 +37,6 @@ Click any of the music videos to enter the editor which features a 'Lookup' tab 
 
 ## Roadmap
 
-- [ ] Create binaries and first GitHub release
 - [ ] Auto-scan entire library
 - [ ] Settings for auto-scan
 - [ ] Artwork viewer with zoom and panning
