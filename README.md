@@ -44,6 +44,6 @@ Click any of the music videos to enter the editor which features a 'Lookup' tab 
 
 ## Notes
 
-This file will be edited shortly to link a fresh topic on the [Kodi forums](https://forum.kodi.tv/).
+I have created a thread for discussion on the [Kodi forums](https://forum.kodi.tv/showthread.php?tid=377316).
 
 Any feedback and suggestions will be greatly appreciated.
