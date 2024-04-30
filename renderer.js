@@ -735,7 +735,7 @@ async function showMusicVideos() {
 		for (const musicVideoField of musicVideoFields) {
 			if (musicVideoField.includeInVideos) {
 				if (!appSettings.videosExtended) {
-					if (['nfo', 'artists', 'title'].includes(musicVideoField.field)) {
+					if (['artists', 'title'].includes(musicVideoField.field)) {
 						renderMusicVideosDetail(detailsInfo, musicVideoField.label, musicVideo[musicVideoField.field], musicVideoField.display)
 					}
 				} else {
