@@ -14,7 +14,10 @@ module.exports = [
 				__dirname: 'readonly',
 				setTimeout: 'readonly',
 				clearTimeout: 'readonly',
-				Buffer: 'readonly'
+				Buffer: 'readonly',
+				HTMLElement: 'readonly',
+				customElements: 'readonly',
+				CustomEvent: 'readonly'
 			}
 		},
 		rules: {

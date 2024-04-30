@@ -14,10 +14,11 @@ window.addEventListener('DOMContentLoaded', () => {
 contextBridge.exposeInMainWorld('electronAPI', {
 	openLink: (url) => ipcRenderer.invoke('action:openUrl', url),
 	chooseFolder: () => ipcRenderer.invoke('dialog:videoFolder'),
-	getFolder: () => ipcRenderer.invoke('settings:getFolder'),
+	getSettings: () => ipcRenderer.invoke('settings:getSettings'),
 	setFolder: (folder) => ipcRenderer.invoke('settings:setFolder', folder),
-	getColorMode: () => ipcRenderer.invoke('settings:getColorMode'),
 	setColorMode: (mode) => ipcRenderer.invoke('settings:setColorMode', mode),
+	setVideosCompact: (checked) => ipcRenderer.invoke('settings:setVideosCompact', checked),
+	setVideosExtended: (checked) => ipcRenderer.invoke('settings:setVideosExtended', checked),
 	getMusicVideos: () => ipcRenderer.invoke('data:getMusicVideos'),
 	saveMusicVideo: (musicVideo) => ipcRenderer.invoke('data:saveMusicVideo', musicVideo),
 	getLookup: (artists, title) => ipcRenderer.invoke('data:getLookup', artists, title),

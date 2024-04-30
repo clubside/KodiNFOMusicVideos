@@ -50,15 +50,6 @@ const musicVideoFields = [
 	{ label: 'File Name', field: 'fileName', display: 'text', edit: 'text', multiple: false, includeInVideos: false, includeInVideo: true, includeInSave: 'fileName' },
 	{ label: 'File Type', field: 'fileType', display: 'text', edit: 'text', multiple: false, includeInVideos: false, includeInVideo: false, includeInSave: '' },
 	{ label: 'NFO', field: 'nfo', display: 'boolean', edit: 'none', multiple: false, includeInVideos: true, includeInVideo: false, includeInSave: '' },
-	{ label: 'Thumbnail', field: 'thumb', display: 'boolean', edit: 'media', multiple: false, includeInVideos: false, includeInVideo: true, includeInSave: 'media' },
-	{ label: 'Disc Art', field: 'discart', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
-	{ label: 'Clear Logo', field: 'clearlogo', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
-	{ label: 'Clear Art', field: 'clearart', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
-	{ label: 'Poster', field: 'poster', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
-	{ label: 'Banner', field: 'banner', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
-	{ label: 'Landscape', field: 'landscape', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
-	{ label: 'Key Art', field: 'keyart', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
-	{ label: 'Fan Art', field: 'fanart', display: 'fanart', edit: 'fanart', multiple: true, includeInVideos: true, includeInVideo: true, includeInSave: 'fanart' },
 	{ label: 'Artist', field: 'artists', display: 'text', edit: 'text', multiple: true, includeInVideos: true, includeInVideo: true, includeInSave: 'musicvideo' },
 	{ label: 'Title', field: 'title', display: 'text', edit: 'text', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'musicvideo' },
 	{ label: 'Album', field: 'album', display: 'text', edit: 'text', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'musicvideo' },
@@ -70,10 +61,19 @@ const musicVideoFields = [
 	{ label: 'Actor', field: 'actors', display: 'actors', edit: 'actors', multiple: true, includeInVideos: true, includeInVideo: true, includeInSave: 'musicvideo' },
 	{ label: 'Runtime', field: 'runtime', display: 'text', edit: 'text', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'musicvideo' },
 	{ label: 'User Rating', field: 'userrating', display: 'stars', edit: 'text', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'musicvideo' },
-	{ label: 'Plot', field: 'plot', display: 'text', edit: 'textarea', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'musicvideo' }
+	{ label: 'Plot', field: 'plot', display: 'text', edit: 'textarea', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'musicvideo' },
+	{ label: 'Thumbnail', field: 'thumb', display: 'boolean', edit: 'media', multiple: false, includeInVideos: false, includeInVideo: true, includeInSave: 'media' },
+	{ label: 'Disc Art', field: 'discart', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
+	{ label: 'Clear Logo', field: 'clearlogo', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
+	{ label: 'Clear Art', field: 'clearart', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
+	{ label: 'Poster', field: 'poster', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
+	{ label: 'Banner', field: 'banner', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
+	{ label: 'Landscape', field: 'landscape', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
+	{ label: 'Key Art', field: 'keyart', display: 'boolean', edit: 'media', multiple: false, includeInVideos: true, includeInVideo: true, includeInSave: 'media' },
+	{ label: 'Fan Art', field: 'fanart', display: 'fanart', edit: 'fanart', multiple: true, includeInVideos: true, includeInVideo: true, includeInSave: 'fanart' }
 ]
 
-let homeFolder = ''
+let appSettings = {}
 let currentPanel = ''
 
 /**
@@ -83,15 +83,6 @@ let currentPanel = ''
  * @property {string} fileName - File name without extension.
  * @property {string} fileType - File extension.
  * @property {boolean} nfo - Is NFO file available based on `${fileName}.nfo` pattern.
- * @property {boolean} thumb - Is thumbnail image available based on `${fileName}-thumb.${extension}` pattern.
- * @property {boolean} discart - Is disc art image available based on `${fileName}-discart.${extension}` pattern.
- * @property {boolean} clearlogo - Is clear logo image available based on `${fileName}-clearlogo.${extension}` pattern.
- * @property {boolean} clearart - Is clear art image available based on `${fileName}-clearart.${extension}` pattern.
- * @property {boolean} poster - Is poster image available based on `${fileName}-poster.${extension}` pattern.
- * @property {boolean} banner - Is banner image available based on `${fileName}-banner.${extension}` pattern.
- * @property {boolean} landscape - Is landscape image available based on `${fileName}-landscape.${extension}` pattern.
- * @property {boolean} keyart - Is key art image available based on `${fileName}-keyart.${extension}` pattern.
- * @property {Array} fanart - Is one or more fan art images available based on `${fileName}-fanart${'' || number}.${extension}` pattern.
  * @property {string|Array} artists - Artist of the song as string or array for multiple artists.
  * @property {string} title - Title of the song.
  * @property {string} album - Album the song appeared on.
@@ -104,6 +95,15 @@ let currentPanel = ''
  * @property {string} runtime - Length of the video in `m:ss` format.
  * @property {integer} userrating - User rating for the video as a number between 1 and 5.
  * @property {string} plot - Description of the action seen in the video.
+ * @property {boolean} thumb - Is thumbnail image available based on `${fileName}-thumb.${extension}` pattern.
+ * @property {boolean} discart - Is disc art image available based on `${fileName}-discart.${extension}` pattern.
+ * @property {boolean} clearlogo - Is clear logo image available based on `${fileName}-clearlogo.${extension}` pattern.
+ * @property {boolean} clearart - Is clear art image available based on `${fileName}-clearart.${extension}` pattern.
+ * @property {boolean} poster - Is poster image available based on `${fileName}-poster.${extension}` pattern.
+ * @property {boolean} banner - Is banner image available based on `${fileName}-banner.${extension}` pattern.
+ * @property {boolean} landscape - Is landscape image available based on `${fileName}-landscape.${extension}` pattern.
+ * @property {boolean} keyart - Is key art image available based on `${fileName}-keyart.${extension}` pattern.
+ * @property {Array} fanart - Is one or more fan art images available based on `${fileName}-fanart${'' || number}.${extension}` pattern.
  */
 /** @type {musicVideo[]} */
 let musicVideos = []
@@ -135,11 +135,11 @@ function captureLinks() {
 }
 
 /**
- * Enables or disables the Set (`set-folder`) button on the `settings` panel based on the `homeFolder` value.
+ * Enables or disables the Set (`set-folder`) button on the `settings` panel based on the `appSettings.homeFolder` value.
  */
 function checkHomeFolder() {
 	const setFolder = document.getElementById('set-folder')
-	if (homeFolder === '') {
+	if (appSettings.homeFolder === '') {
 		setFolder.setAttribute('disabled', '')
 	} else {
 		setFolder.removeAttribute('disabled')
@@ -362,7 +362,7 @@ async function saveMusicVideo() {
 		if (musicVideoField.includeInSave === 'media') {
 			const fieldName = musicVideoField.field
 			const currentFieldName = `current${fieldName[0].toUpperCase() + fieldName.slice(1)}`
-			data[currentFieldName] = musicVideo[musicVideoField.field] ? `file://${homeFolder}/${musicVideo.fileName}-${musicVideoField.field}.${musicVideo[musicVideoField.field]}` : undefined
+			data[currentFieldName] = musicVideo[musicVideoField.field] ? `file://${appSettings.homeFolder}/${musicVideo.fileName}-${musicVideoField.field}.${musicVideo[musicVideoField.field]}` : undefined
 			data[musicVideoField.field] = undefined
 		} else if (musicVideoField.includeInSave === 'fanart') {
 			data.currentFanart = musicVideo.fanart
@@ -459,7 +459,7 @@ function setMusicVideoValue(musicVideoField, musicVideo) {
 			break
 		}
 		case 'media':
-			musicVideoElement.value = musicVideo[musicVideoField.field] ? `file://${homeFolder}/${musicVideo.fileName}-${musicVideoField.field}.${musicVideo[musicVideoField.field]}` : ''
+			musicVideoElement.value = musicVideo[musicVideoField.field] ? `file://${appSettings.homeFolder}/${musicVideo.fileName}-${musicVideoField.field}.${musicVideo[musicVideoField.field]}` : ''
 			break
 		case 'fanart': {
 			const panelImages = document.getElementById('panel-video-images')
@@ -488,9 +488,9 @@ function setMusicVideoValue(musicVideoField, musicVideo) {
 					}
 				}
 				for (const fanart of musicVideo.fanart) {
-					// console.log(fanart, `musicvideo-${fanart.name}`, `file://${homeFolder}/${musicVideo.fileName}-${fanart.name}.${fanart.type}`)
+					// console.log(fanart, `musicvideo-${fanart.name}`, `file://${appSettings.homeFolder}/${musicVideo.fileName}-${fanart.name}.${fanart.type}`)
 					const extrafanart = document.getElementById(`musicvideo-${fanart.name}`)
-					extrafanart.value = `file://${homeFolder}/${musicVideo.fileName}-${fanart.name}.${fanart.type}`
+					extrafanart.value = `file://${appSettings.homeFolder}/${musicVideo.fileName}-${fanart.name}.${fanart.type}`
 				}
 			} else {
 				musicVideoElement.removeAttribute('value')
@@ -543,7 +543,7 @@ function showMusicVideo(element) {
 			musicVideoType = musicVideo.fileType
 	}
 	const musicVideoElement = document.querySelector('#panel-video video')
-	musicVideoElement.innerHTML = `<source src="${homeFolder}/${musicVideo.fileName}.${musicVideo.fileType}" type="video/${musicVideoType}">`
+	musicVideoElement.innerHTML = `<source src="${appSettings.homeFolder}/${musicVideo.fileName}.${musicVideo.fileType}" type="video/${musicVideoType}">`
 	musicVideoElement.load()
 	for (const musicVideoField of musicVideoFields) {
 		if (musicVideoField.includeInVideo) {
@@ -723,7 +723,7 @@ async function showMusicVideos() {
 		holder.dataset.fileName = musicVideo.fileName
 		const imageDiv = document.createElement('div')
 		const imageDivImg = document.createElement('img')
-		imageDivImg.src = musicVideo.thumb ? `file://${homeFolder}/${musicVideo.fileName}-thumb.${musicVideo.thumb}` : 'img/no-thumbnail.jpg'
+		imageDivImg.src = musicVideo.thumb ? `file://${appSettings.homeFolder}/${musicVideo.fileName}-thumb.${musicVideo.thumb}` : 'img/no-thumbnail.jpg'
 		imageDiv.appendChild(imageDivImg)
 		holder.appendChild(imageDiv)
 		const detailsDiv = document.createElement('div')
@@ -734,7 +734,13 @@ async function showMusicVideos() {
 		detailsInfo.className = 'video-item-details'
 		for (const musicVideoField of musicVideoFields) {
 			if (musicVideoField.includeInVideos) {
-				renderMusicVideosDetail(detailsInfo, musicVideoField.label, musicVideo[musicVideoField.field], musicVideoField.display)
+				if (!appSettings.videosExtended) {
+					if (['nfo', 'artists', 'title'].includes(musicVideoField.field)) {
+						renderMusicVideosDetail(detailsInfo, musicVideoField.label, musicVideo[musicVideoField.field], musicVideoField.display)
+					}
+				} else {
+					renderMusicVideosDetail(detailsInfo, musicVideoField.label, musicVideo[musicVideoField.field], musicVideoField.display)
+				}
 			}
 		}
 		detailsDiv.appendChild(detailsInfo)
@@ -748,17 +754,20 @@ async function showMusicVideos() {
 
 /**
  * Initializes the app by creating the media upload elements of the `video` panel and then
- * displaying the initial panel view based on whether or not a `homeFolder` has been saved in
+ * displaying the initial panel view based on whether or not a `appSettings.homeFolder` has been saved in
  * the app configuration file. Also captures all links so they open in the default browser.
  */
 async function startup() {
 	captureFilters()
 	captureLinks()
 	document.getElementById('musicvideo-fanart').addEventListener('add', addFanart)
-	homeFolder = await window.electronAPI.getFolder()
-	console.log(homeFolder)
-	toggleColorMode(await window.electronAPI.getColorMode())
-	if (homeFolder !== '') {
+	appSettings = await window.electronAPI.getSettings()
+	console.log(appSettings)
+	document.getElementById('home-folder').value = appSettings.homeFolder
+	toggleColorMode(appSettings.colorMode)
+	toggleSettingsVideosCompact(null, appSettings.videosCompact)
+	toggleSettingsVideosExtended(null, appSettings.videosExtended)
+	if (appSettings.homeFolder !== '') {
 		await getMusicVideos()
 		setCurrentPanel('videos', false)
 	} else {
@@ -792,22 +801,22 @@ document.getElementById('nav-color-mode').addEventListener('click', toggleColorM
 document.getElementById('browse-folder').addEventListener('click', async () => {
 	const newFolder = await window.electronAPI.chooseFolder()
 	if (newFolder !== '') {
-		homeFolder = newFolder
-		document.getElementById('home-folder').value = homeFolder
+		appSettings.homeFolder = newFolder
+		document.getElementById('home-folder').value = appSettings.homeFolder
 		checkHomeFolder()
 	}
 })
 
 document.getElementById('home-folder').addEventListener('change', () => {
-	homeFolder = document.getElementById('home-folder').value
+	appSettings.homeFolder = document.getElementById('home-folder').value
 	checkHomeFolder()
 })
 
 document.getElementById('set-folder').addEventListener('click', async () => {
-	console.log(`setting music videos folder to ${homeFolder}`)
-	homeFolder = await window.electronAPI.setFolder(homeFolder)
-	console.log(`new music videos folder is ${homeFolder}`)
-	if (homeFolder !== '') {
+	console.log(`setting music videos folder to ${appSettings.homeFolder}`)
+	appSettings.homeFolder = await window.electronAPI.setFolder(appSettings.homeFolder)
+	console.log(`new music videos folder is ${appSettings.homeFolder}`)
+	if (appSettings.homeFolder !== '') {
 		await getMusicVideos()
 		setCurrentPanel('videos', false)
 	}
@@ -845,6 +854,35 @@ for (const input of ['musicvideo-artists', 'musicvideo-title', 'lookup-artists',
 	const inputElement = document.getElementById(input)
 	inputElement.addEventListener('input', setLookupAction)
 }
+
+function toggleSettingsVideosCompact(event, value) {
+	const settingsToggle = document.getElementById('videos-setting-compact')
+	const videosItems = document.querySelector('.panel-videos-items')
+	console.log({ checked: settingsToggle.checked, value })
+	if (settingsToggle.checked) {
+		videosItems.classList.add('panel-videos-items-compact')
+	} else {
+		videosItems.classList.remove('panel-videos-items-compact')
+	}
+	if (value) {
+		settingsToggle.checked = value
+	}
+	appSettings.videosCompact = settingsToggle.checked
+}
+
+function toggleSettingsVideosExtended(event, value) {
+	const settingsToggle = document.getElementById('videos-setting-extended')
+	console.log({ checked: settingsToggle.checked, value })
+	if (value) {
+		settingsToggle.checked = value
+	}
+	appSettings.videosExtended = settingsToggle.checked
+	showMusicVideos()
+}
+
+document.getElementById('videos-setting-compact').addEventListener('change', toggleSettingsVideosCompact)
+
+document.getElementById('videos-setting-extended').addEventListener('change', toggleSettingsVideosExtended)
 
 window.electronAPI.captureVideoFrameAsMedia((value) => {
 	console.log('Capture video frame...')

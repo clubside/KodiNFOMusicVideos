@@ -69,6 +69,7 @@ class ToggleSwitch extends HTMLElement {
 				:host {
 					display: inline-block;
 					height: 1em;
+					line-height: 0;
 					aspect-ratio: 5 / 3;
 					background: linear-gradient(90deg, rgb(226 226 227 / 100%) 0%, rgb(232 232 235 / 100%) 100%);
 					border-radius: 1em;

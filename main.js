@@ -25,7 +25,9 @@ const appOptions = {
 	windowY: undefined,
 	windowWidth: undefined,
 	windowHeight: undefined,
-	colorMode: 'light'
+	colorMode: 'light',
+	videosCompact: false,
+	videosExtended: true
 }
 const appConfig = path.join(app.getPath('userData'), 'config.json')
 
@@ -61,11 +63,23 @@ async function setVideoFolder(folder) {
 		appOptions.homeFolder = pathNormalized
 		await setOptions()
 		return appOptions.homeFolder
+	} else {
+		return folder
 	}
 }
 
 function setColorMode(mode) {
 	appOptions.colorMode = mode
+	setOptions()
+}
+
+function setVideosCompact(checked) {
+	appOptions.videosCompact = checked
+	setOptions()
+}
+
+function setVideosExtended(checked) {
+	appOptions.videosExtended = checked
 	setOptions()
 }
 
@@ -198,19 +212,29 @@ ipcMain.handle('action:openUrl', (event, url) => {
 	shell.openExternal(url)
 })
 ipcMain.handle('dialog:videoFolder', browseVideoFolder)
-ipcMain.handle('settings:getFolder', () => {
-	return appOptions.homeFolder
+ipcMain.handle('settings:getSettings', () => {
+	return {
+		homeFolder: appOptions.homeFolder,
+		colorMode: appOptions.colorMode,
+		videosCompact: appOptions.videosCompact,
+		videosExtended: appOptions.videosExtended
+	}
 })
 ipcMain.handle('settings:setFolder', async (event, folder) => {
 	console.log(`setting folder to ${folder}`)
 	return await setVideoFolder(folder)
 })
-ipcMain.handle('settings:getColorMode', () => {
-	return appOptions.colorMode
-})
 ipcMain.handle('settings:setColorMode', (event, mode) => {
 	console.log(`setting color mode to ${mode}`)
 	setColorMode(mode)
+})
+ipcMain.handle('settings:setVideosCompact', (event, checked) => {
+	console.log(`setting videos compact to ${checked}`)
+	setVideosCompact(checked)
+})
+ipcMain.handle('settings:setVideosExtended', (event, checked) => {
+	console.log(`setting videos extended to ${checked}`)
+	setVideosExtended(checked)
 })
 ipcMain.handle('data:getMusicVideos', getMusicVideos)
 ipcMain.handle('data:getLookup', async (event, artists, title) => {
