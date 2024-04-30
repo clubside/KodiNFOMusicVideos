@@ -105,7 +105,7 @@ async function getMusicBrainzGenres(id) {
 			}
 		}
 	}
-	return genres.join('; ')
+	return genres
 }
 
 async function getMusicBrainzLabels(id) {
@@ -124,7 +124,7 @@ async function getMusicBrainzLabels(id) {
 			}
 		}
 	}
-	return labels.join('; ')
+	return labels
 }
 
 function parseMusicBrainzRecordings(title, recordingsData) {
@@ -132,7 +132,6 @@ function parseMusicBrainzRecordings(title, recordingsData) {
 	// console.log({ titleCheck })
 	const recordings = []
 	// console.log(recordingsData)
-	// console.log({ recordings: recordingsData.length })
 	for (const recording of recordingsData) {
 		const titleNormalized = normalizeQuotes(recording.title)
 		let firstReleaseDate = ''
@@ -154,7 +153,7 @@ function parseMusicBrainzRecordings(title, recordingsData) {
 				const releases = []
 				for (const release of recording.releases) {
 					// console.log(release)
-					if (release.status === 'Official' && release['release-group']['primary-type'] === 'Album' && release.date) {
+					if (release.status === 'Official' && (release['release-group']['primary-type'] === 'Album' || release['release-group']['primary-type'] === 'EP') && release.date) {
 						const secondaryTypes = release['release-group']['secondary-types']
 						if (!secondaryTypes || secondaryTypes.includes('Soundtrack')) {
 							if (firstReleaseDate === '') {
@@ -227,6 +226,7 @@ function parseMusicBrainzRecordings(title, recordingsData) {
 			})
 		}
 	}
+	// console.log({ retrieved: recordingsData.length, matches: recordings.length, filtered: recordingsFiltered.length })
 	return recordingsFinal
 }
 
@@ -319,7 +319,7 @@ async function getMusicBrainzRecording(artists, title) {
 	const titleCheck = paramsClean(title)
 	const titleLookup = escapeLucene(titleCheck)
 	// console.log({ artists, artistCheck, artistLookup, title, titleCheck, titleLookup })
-	const lookupUrl = `https://musicbrainz.org/ws/2/recording?query="${titleLookup}"+AND+artist%3A"${artistsLookup}"+AND+type%3A"album"&fmt=json&limit=100`
+	const lookupUrl = `https://musicbrainz.org/ws/2/recording?query="${titleLookup}"+AND+artist%3A"${artistsLookup}"&fmt=json&limit=100`
 	const returnData = await getMusicBrainzRecordings(lookupUrl)
 	if (returnData.error) {
 		lookupData.fetchError = { source: 'MusicBrainz', status: returnData.status }

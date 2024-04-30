@@ -288,9 +288,9 @@
 				</div>
 			</article>
 			<article id="panel-video" class="hidden">
-				<div class="panel-video-editor-container">
-					<div class="panel-video-editor">
-						<div class="panel-video-top">
+				<div class="panel-video-editor">
+					<div class="panel-video-top">
+						<div class="panel-video-top-inner">
 							<video controls></video>
 							<label>
 								<span>Filename</span>
@@ -300,95 +300,99 @@
 								</div>
 							</label>
 						</div>
-						<form class="panel-video-fields">
-							<label>
-								<span>Artists</span>
-								<input id="musicvideo-artists" type="text" placeholder="Separate by ;" required>
-							</label>
-							<label>
-								<span>Title</span>
-								<input id="musicvideo-title" type="text" required>
-							</label>
-							<label>
-								<span>Album</span>
-								<input id="musicvideo-album" type="text">
-							</label>
-							<label>
-								<span>Premiered</span>
-								<input id="musicvideo-premiered" type="text" placeholder="Format as yyyy-mm-dd">
-							</label>
-							<label>
-								<span>Directors</span>
-								<input id="musicvideo-directors" type="text" placeholder="Separate by ;">
-							</label>
-							<label>
-								<span>Studios</span>
-								<input id="musicvideo-studios" type="text" placeholder="Separate by ;">
-							</label>
-							<label>
-								<span>Genres</span>
-								<input id="musicvideo-genres" type="text" placeholder="Separate by ;">
-							</label>
-							<label>
-								<span>Tags</span>
-								<input id="musicvideo-tags" type="text" placeholder="Separate by ;">
-							</label>
-							<label>
-								<span>Actors</span>
-								<input id="musicvideo-actors" type="text" placeholder="Format as Name, Role. Separate by ;">
-							</label>
-							<label>
-								<span>Runtime</span>
-								<input id="musicvideo-runtime" type="text">
-							</label>
-							<label>
-								<span>User Rating</span>
-								<star-rating id="musicvideo-userrating" stars="5"></star-rating>
-							</label>
-						</form>
-						<div class="panel-video-plot">
-							<label>
-								<span>Plot</span>
-								<textarea id="musicvideo-plot"></textarea>
-							</label>
-						</div>
-						<div id="panel-video-images">
-							<label>
-								<span>Thumbnail</span>
-								<media-upload id="musicvideo-thumb" class="media-upload media-upload-1x1" types="image/jpeg image/png image/webp"></media-upload>
-							</label>
-							<label>
-								<span>Disc Art</span>
-								<media-upload id="musicvideo-discart" class="media-upload media-upload-1x1" types="image/jpeg image/png image/webp"></media-upload>
-							</label>
-							<label>
-								<span>Clear Logo</span>
-								<media-upload id="musicvideo-clearlogo" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
-							</label>
-							<label>
-								<span>Clear Art</span>
-								<media-upload id="musicvideo-clearart" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
-							</label>
-							<label>
-								<span>Poster</span>
-								<media-upload id="musicvideo-poster" class="media-upload media-upload-2x3" types="image/jpeg image/png image/webp"></media-upload>
-							</label>
-							<label>
-								<span>Banner</span>
-								<media-upload id="musicvideo-banner" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
-							</label>
-							<label>
-								<span>Landscape</span>
-								<media-upload id="musicvideo-landscape" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
-							</label>
-							<label>
-								<span>Key Art</span>
-								<media-upload id="musicvideo-keyart" class="media-upload media-upload-2x3" types="image/jpeg image/png image/webp"></media-upload>
-							</label>
-							<label>
-								<span>Fan Art</span>
-								<media-upload id="musicvideo-fanart" class="media-upload media-upload-16x9" types="image/jpeg image/png image/webp" addable></media-upload>
-							</label>
+					</div>
+					<div class="panel-video-bottom">
+						<div class="panel-video-bottom-inner">
+							<form class="panel-video-fields">
+								<label>
+									<span>Artists</span>
+									<input id="musicvideo-artists" type="text" placeholder="Separate by ;" required>
+								</label>
+								<label>
+									<span>Title</span>
+									<input id="musicvideo-title" type="text" required>
+								</label>
+								<label>
+									<span>Album</span>
+									<input id="musicvideo-album" type="text">
+								</label>
+								<label>
+									<span>Premiered</span>
+									<input id="musicvideo-premiered" type="text" placeholder="Format as yyyy-mm-dd">
+								</label>
+								<label>
+									<span>Directors</span>
+									<input id="musicvideo-directors" type="text" placeholder="Separate by ;">
+								</label>
+								<label>
+									<span>Studios</span>
+									<input id="musicvideo-studios" type="text" placeholder="Separate by ;">
+								</label>
+								<label>
+									<span>Genres</span>
+									<input id="musicvideo-genres" type="text" placeholder="Separate by ;">
+								</label>
+								<label>
+									<span>Tags</span>
+									<input id="musicvideo-tags" type="text" placeholder="Separate by ;">
+								</label>
+								<label>
+									<span>Actors</span>
+									<input id="musicvideo-actors" type="text" placeholder="Format as Name, Role. Separate by ;">
+								</label>
+								<label>
+									<span>Runtime</span>
+									<input id="musicvideo-runtime" type="text">
+								</label>
+								<label>
+									<span>User Rating</span>
+									<star-rating id="musicvideo-userrating" stars="5"></star-rating>
+								</label>
+							</form>
+							<div class="panel-video-plot">
+								<label>
+									<span>Plot</span>
+									<textarea id="musicvideo-plot"></textarea>
+								</label>
+							</div>
+							<div id="panel-video-images">
+								<label>
+									<span>Thumbnail</span>
+									<media-upload id="musicvideo-thumb" class="media-upload media-upload-1x1" types="image/jpeg image/png image/webp"></media-upload>
+								</label>
+								<label>
+									<span>Disc Art</span>
+									<media-upload id="musicvideo-discart" class="media-upload media-upload-1x1" types="image/jpeg image/png image/webp"></media-upload>
+								</label>
+								<label>
+									<span>Clear Logo</span>
+									<media-upload id="musicvideo-clearlogo" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
+								</label>
+								<label>
+									<span>Clear Art</span>
+									<media-upload id="musicvideo-clearart" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
+								</label>
+								<label>
+									<span>Poster</span>
+									<media-upload id="musicvideo-poster" class="media-upload media-upload-2x3" types="image/jpeg image/png image/webp"></media-upload>
+								</label>
+								<label>
+									<span>Banner</span>
+									<media-upload id="musicvideo-banner" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
+								</label>
+								<label>
+									<span>Landscape</span>
+									<media-upload id="musicvideo-landscape" class="media-upload media-upload-3x2" types="image/jpeg image/png image/webp"></media-upload>
+								</label>
+								<label>
+									<span>Key Art</span>
+									<media-upload id="musicvideo-keyart" class="media-upload media-upload-2x3" types="image/jpeg image/png image/webp"></media-upload>
+								</label>
+								<label>
+									<span>Fan Art</span>
+									<media-upload id="musicvideo-fanart" class="media-upload media-upload-16x9" types="image/jpeg image/png image/webp" addable></media-upload>
+								</label>
+							</div>
 						</div>
 					</div>
 				</div>

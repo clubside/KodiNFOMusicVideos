@@ -24,7 +24,6 @@
 
 * {
 	scrollbar-width: thin;
-	scrollbar-color: #ccc #f2f2f6;
 }
 
 html {
@@ -292,6 +291,135 @@ footer article:last-child {
 	z-index: 100;
 }
 
+.panel-view-content {
+	background-color: var(--tab-background);
+	overflow: hidden;
+	transition: max-height 0.2s ease-in-out;
+}
+
+.panel-view-filter-bar {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	gap: 1em;
+	width: 80%;
+	margin: 0 auto;
+	padding: 8px;
+}
+
+.panel-view-filter-fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(10em, 100%), 1fr));
+	gap: 1em;
+	width: 80%;
+	margin: 0 auto 16px;
+	padding: 8px;
+}
+
+.panel-view-filter-bar label,
+.panel-view-filter-fields label {
+	display: flex;
+	flex-direction: column;
+}
+
+.star-display {
+	width: 1em;
+	height: 1em;
+	stroke: black;
+	fill: none;
+}
+
+.star-selected {
+	fill: yellow;
+}
+
+#panel-video {
+	height: calc(100vh - 64px);
+	display: grid;
+	grid-template-rows: 1fr auto;
+}
+
+.panel-video-editor {
+	width: 80%;
+	color: var(--panel-foreground);
+	display: grid;
+	grid-template-rows: 1fr 3fr;
+	gap: 8px;
+	margin: 0 auto;
+	padding: 8px;
+	overflow: hidden;
+}
+
+.panel-video-top-inner {
+	background-color: var(--panel-background);
+	display: grid;
+	grid-template-rows: 1fr auto;
+	border-radius: 8px;
+	padding: 8px;
+}
+
+.panel-video-top-inner video {
+	margin: 0 auto;
+	max-width: 100%;
+}
+
+.panel-video-top-inner label {
+	padding: 0.5em 0;
+	margin: 0;
+}
+
+.panel-video-top-inner div {
+	display: flex;
+	gap: 0.5em;
+}
+
+.panel-video-top-inner div button#action-auto {
+	width: 32px;
+	height: 32px;
+}
+
+.panel-video-bottom {
+	overflow-y: auto;
+}
+
+.panel-video-bottom label {
+	margin: 0;
+}
+
+.panel-video-bottom-inner {
+	background-color: var(--panel-background);
+	padding: 8px;
+}
+
+.panel-video-fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
+	gap: 1em;
+}
+
+.panel-video-plot {
+	margin-top: 16px;
+}
+
+#panel-video-images {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	margin-top: 16px;
+}
+
+#panel-video input,
+#panel-video textarea {
+	width: 100%;
+}
+
+@media (min-width: 1280px) {
+	.panel-video-editor {
+		width: 100%;
+		grid-template-columns: 2fr 3fr;
+		grid-template-rows: auto;
+	}
+}
+
 .panel-lookup-content {
 	background-color: var(--tab-background);
 	overflow: hidden;
@@ -322,6 +450,7 @@ footer article:last-child {
 }
 
 .panel-lookup-content-results {
+	padding-right: 8px;
 	overflow: hidden auto;
 }
 
@@ -375,118 +504,6 @@ footer article:last-child {
 	height: 200px;
 	display: inline-flex;
 	margin: 0 0 4px 4px;
-}
-
-.panel-view-content {
-	background-color: var(--tab-background);
-	overflow: hidden;
-	transition: max-height 0.2s ease-in-out;
-}
-
-.panel-view-filter-bar {
-	display: grid;
-	grid-template-columns: 2fr 1fr 1fr;
-	gap: 1em;
-	width: 80%;
-	margin: 0 auto;
-	padding: 8px;
-}
-
-.panel-view-filter-fields {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(min(10em, 100%), 1fr));
-	gap: 1em;
-	width: 80%;
-	margin: 0 auto 16px;
-	padding: 8px;
-}
-
-.panel-view-filter-bar label,
-.panel-view-filter-fields label {
-	display: flex;
-	flex-direction: column;
-}
-
-.star-display {
-	width: 1em;
-	height: 1em;
-	stroke: black;
-	fill: none;
-}
-
-.star-selected {
-	fill: yellow;
-}
-
-#panel-video {
-	height: calc(100vh - 64px);
-	display: grid;
-	grid-template-rows: 1fr auto;
-}
-
-.panel-video-editor-container {
-	padding: 8px;
-	overflow-y: auto;
-}
-
-.panel-video-editor {
-	width: 80%;
-	background-color: var(--panel-background);
-	color: var(--panel-foreground);
-	display: block;
-	margin: 0 auto;
-	border-radius: 8px;
-	padding: 8px;
-}
-
-.panel-video-top {
-	background-color: var(--panel-background);
-	display: flex;
-	flex-direction: column;
-	position: sticky;
-	top: 0;
-	z-index: 50;
-}
-
-.panel-video-top video {
-	height: 25vh;
-}
-
-.panel-video-top label {
-	padding: 0.5em 0;
-	margin: 0;
-}
-
-.panel-video-top div {
-	display: flex;
-	gap: 0.5em;
-}
-
-.panel-video-top div button#action-auto {
-	width: 32px;
-	height: 32px;
-}
-
-.panel-video-fields {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
-	gap: 1em;
-}
-
-.panel-video-plot {
-	margin-top: 1.5em;
-}
-
-#panel-video-images {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1em;
-	margin: 1em 0 0.5em;
-}
-
-#panel-video input,
-#panel-video textarea {
-	width: 100%;
 }
 
 #panel-about.hidden,

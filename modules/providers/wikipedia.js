@@ -224,10 +224,10 @@ function parseWikipediaInfobox(text) {
 				const split = line.indexOf('=')
 				const param = line.substring(1, split).trim()
 				const value = line.substring(split + 1).trim()
-				if (value === '{{flatlist|' || value === '{{plainlist|') {
+				if (value.toLowerCase() === '{{flatlist|' || value.toLowerCase() === '{{plainlist|') {
 					inList = true
 					listParam = param
-				} else if (value.substring(0, 8) === '{{hlist|') {
+				} else if (value.substring(0, 8).toLowerCase() === '{{hlist|') {
 					const hlist = stripWikipediaText(value.substring(8, value.length - 2))
 					songInfo[param] = hlist.split('|')
 				} else if (value === '') {
@@ -338,10 +338,10 @@ async function parseWikipedia(artists, wikipedia) {
 			musicvideo.album = infoboxData.album.join('; ')
 		}
 		if (infoboxData.genre) {
-			musicvideo.genres = infoboxData.genre.join('; ')
+			musicvideo.genres = infoboxData.genre
 		}
 		if (infoboxData.label) {
-			musicvideo.studios = infoboxData.label.join('; ')
+			musicvideo.studios = infoboxData.label
 		}
 		if (infoboxData.cover) {
 			const thumbLookup = wikipedia.images.find(({ title }) => {
