@@ -10,9 +10,10 @@
 	<title>Kodi NFO Music Videos</title>
 	<link href="./css/the-new-css-reset.css" rel="stylesheet">
 	<link href="./css/style.css" rel="stylesheet">
-	<script src="./modules/media-upload.js"></script>
-	<script src="./modules/star-rating.js"></script>
-	<script src="./modules/toggle-switch.js"></script>
+	<script src="./modules/web-components/media-upload.js"></script>
+	<script src="./modules/web-components/star-rating.js"></script>
+	<script src="./modules/web-components/toggle-switch.js"></script>
+	<script src="./modules/web-components/progress-bar.js"></script>
 </head>
 
 <body>
@@ -41,9 +42,22 @@
 		<symbol id="icon-link" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M21 3L15 3M21 3L12 12M21 3V9" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H11" stroke="inherit" stroke-width="1.5" stroke-linecap="round"></path></symbol>
 		<symbol id="icon-dark" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
 		<symbol id="icon-light" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-scan" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M21.1679 8C19.6247 4.46819 16.1006 2 11.9999 2C6.81459 2 2.55104 5.94668 2.04932 11" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2.88146 16C4.42458 19.5318 7.94874 22 12.0494 22C17.2347 22 21.4983 18.0533 22 13" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.04932 16H2.64932C2.31795 16 2.04932 16.2686 2.04932 16.6V21" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-about" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 18.01L12.01 17.9989" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+		<symbol id="icon-list" viewBox="0 0 24 24" stroke-width="1.5" fill="inherit" color="inherit"><path d="M2 11L16 11" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 17L13 17" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 5L20 5" stroke="inherit" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 18.5C20 19.3284 19.3284 20 18.5 20C17.6716 20 17 19.3284 17 18.5C17 17.6716 17.6716 17 18.5 17C19.3284 17 20 17.6716 20 18.5ZM20 18.5V10.6C20 10.2686 20.2686 10 20.6 10H22" stroke="inherit" stroke-width="1.5" stroke-linecap="round"></path></symbol>
 	</svg>
 	<section>
 		<main>
+			<article id="panel-home" class="hidden">
+				<div class="panel-inner">
+					<div class="app-header"><img src="img/appheader.png"></div>
+					<div class="panel-home-stats"></div>
+				</div>
+				<button id="action-list" type="button" class="button-action"><svg><use href="#icon-list"></use></svg><span>View music videos</span></button>
+				<button id="action-scan" type="button" class="button-action"><svg><use href="#icon-scan"></use></svg><span>Scan music videos</span></button>
+				<button id="action-settings" type="button" class="button-action"><svg><use href="#icon-settings"></use></svg><span>Settings</span></button>
+				<button id="action-about" type="button" class="button-action"><svg><use href="#icon-about"></use></svg><span>About</span></button>
+			</article>
 			<article id="panel-about" class="hidden">
 				<div class="panel-inner">
 					<div class="app-header"><img src="img/appheader.png"></div>
@@ -55,7 +69,7 @@
 					<h2>Development</h2>
 					<div class="about-item">
 						<img src="img/github.svg">
-						<p>KodiNFOMusicVideos v1.0</p>
+						<p>KodiNFOMusicVideos v1.5</p>
 						<a href="https://github.com/clubside/KodiNFOMusicVideos">Create and Edit Kdoi NFO files for Music Videos collection</a>
 					</div>
 					<div class="about-item">
@@ -421,6 +435,12 @@
 							<div class="panel-lookup-content-results"></div>
 						</div>
 					</div>
+				</div>
+			</article>
+			<article id="panel-scan" class="hidden">
+				<div class="panel-inner">
+					<video controls></video>
+					<div class="panel-scan-progress"></div>
 				</div>
 			</article>
 		</main>

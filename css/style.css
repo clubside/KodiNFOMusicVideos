@@ -128,11 +128,20 @@ footer article:last-child {
 	justify-content: end;
 }
 
+#panel-home,
 #panel-about,
 #panel-settings {
 	height: calc(100vh - 64px);
 	padding: 8px;
 	overflow-y: auto;
+}
+
+#panel-home,
+#panel-settings {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .panel-inner {
@@ -156,6 +165,14 @@ footer article:last-child {
 .app-header img {
 	width: 80%;
 	height: auto;
+}
+
+.panel-home-stats {
+	padding: 1em 2em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0 1em;
 }
 
 .panel-settings-header {
@@ -573,6 +590,7 @@ footer article:last-child {
 	margin: 0 0 4px 4px;
 }
 
+#panel-home.hidden,
 #panel-about.hidden,
 #panel-settings.hidden,
 #panel-videos.hidden,
@@ -817,6 +835,51 @@ button.button-image:disabled {
 
 button.button-image:disabled svg {
 	stroke: #b8c9e0;
+}
+
+button.button-action {
+	width: 80ch;
+	height: 3.25em;
+	max-width: 100%;
+	background-color: var(--panel-background);
+	color: var(--panel-foreground);
+	display: flex;
+	align-items: center;
+	margin: 1em auto 0;
+	padding: 8px 16px;
+	border-radius: 8px;
+	line-height: 0;
+	cursor: pointer;
+}
+
+button.button-action:hover,
+button.button-action:active {
+	color: var(--body-background);
+	background-color: var(--button-active);
+}
+
+button.button-action:focus {
+	outline-style: solid;
+	outline-color: transparent;
+	border-color: var(--input-focus);
+	box-shadow: 0 0 0 2px var(--button-focus);
+}
+
+button.button-action svg {
+	width: 32px;
+	height: 32px;
+	stroke: #306fe1;
+	fill: none;
+	margin-right: 1em;
+}
+
+button.button-action:hover svg,
+button.button-action:active svg {
+	stroke: var(--body-background);
+}
+
+button.button-action:focus svg {
+	stroke: #0a4ac2;
 }
 
 star-rating {
